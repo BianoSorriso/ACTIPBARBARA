@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ site_config.organization_name|default:"ACITP" }}{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-row">
+            <a class="brand" href="{% url 'home' %}">
+                <span class="brand-mark">&#10084;</span>
+                <span>{{ site_config.organization_name|default:"ACITP" }}</span>
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Abrir menu" data-menu-toggle>
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="site-nav" data-menu>
+                <a href="{% url 'home' %}#historia">Nossa Historia</a>
+                <a href="{% url 'events' %}">Eventos</a>
+                <a href="{% url 'home' %}#doacoes">Doacoes</a>
+                <a href="{% url 'volunteer' %}">Voluntariado</a>
+                <a href="{% url 'testimonials' %}">Depoimentos</a>
+                <a href="{% url 'home' %}#contato">Contato</a>
+                {% if user.is_authenticated %}
+                    <a class="button button-secondary" href="{% url 'logout' %}">Sair</a>
+                {% else %}
+                    <a class="button button-secondary" href="{% url 'login' %}">Entrar</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    {% if messages %}
+        <div class="flash-stack container">
+            {% for message in messages %}
+                <div class="flash flash-{{ message.tags|default:'info' }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-brand">{{ site_config.organization_name|default:"ACITP" }}</div>
+                <p class="footer-text">{{ site_config.footer_text }}</p>
+            </div>
+            <div>
+                <h3>Contato</h3>
+                <ul class="footer-list">
+                    <li>{{ site_config.contact_phone }}</li>
+                    <li>{{ site_config.contact_email }}</li>
+                    <li>{{ site_config.contact_address }}</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Links uteis</h3>
+                <ul class="footer-list">
+                    <li><a href="{% url 'home' %}#historia">Nossa Historia</a></li>
+                    <li><a href="{% url 'events' %}">Eventos</a></li>
+                    <li><a href="{% url 'volunteer' %}">Voluntariado</a></li>
+                    <li><a href="{% url 'testimonials' %}">Depoimentos</a></li>
+                    <li><a href="{% url 'admin:index' %}">Painel admin</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 {{ site_config.organization_name|default:"ACITP" }}. Todos os direitos reservados.</div>
+    </footer>
+
+    <script src="{% static 'core/js/site.js' %}"></script>
+</body>
+</html>

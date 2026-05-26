@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Voluntariado - {{ site_config.organization_name }}{% endblock %}
+
+{% block content %}
+<section class="section volunteer-section">
+    <div class="container volunteer-layout">
+        <div class="volunteer-copy">
+            <span class="eyebrow"><i class="fa-solid fa-hand-holding-heart"></i> Junte-se a nós</span>
+            <h1>{{ site_config.volunteer_title }}</h1>
+            <p class="section-copy">{{ site_config.volunteer_intro }}</p>
+            
+            <div class="accent-panel" style="margin: 1.5rem 0; padding: 1.5rem;">
+                <h3 style="color: #fff; margin-bottom: 1rem;">Como você pode ajudar:</h3>
+                <ul class="check-list on-dark">
+                    {% for item in site_config.volunteer_benefits_list %}
+                        <li style="color: rgba(255,255,255,0.9);">{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1.5rem;">
+                <div class="icon-badge" style="background: rgba(216, 174, 100, 0.1); color: var(--secondary);">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <p><strong>Voluntários são o coração da ONG.</strong><br>Sua ajuda faz toda a diferença no dia a dia dos nossos idosos.</p>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <a class="button button-outline" href="{% url 'home' %}#doacoes">Ou faça uma doação</a>
+            </div>
+        </div>
+        <div class="info-card volunteer-form-card">
+            <h2>Enviar inscrição</h2>
+            <p style="color: var(--muted); margin-bottom: 1.5rem;">Preencha o formulário abaixo e entraremos em contato.</p>
+            
+            <form method="post" class="form-grid single-column">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="field-wrapper field-full">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}<small class="error-text">{{ field.errors|join:', ' }}</small>{% endif %}
+                    </div>
+                {% endfor %}
+                <div class="field-full" style="margin-top: 1rem;">
+                    <button class="button" type="submit" style="width: 100%;">Enviar minha inscrição</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

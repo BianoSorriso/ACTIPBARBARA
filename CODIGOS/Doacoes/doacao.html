@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ACTP — Apoie Nossa Causa</title>
+<link rel="stylesheet" href="doacao.css" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+<body>
+
+    
+<header>
+        <nav>
+            <a href="#" class="logo">
+                <span><i class="fa-solid fa-heart"></i></span> ACITP
+            </a>
+
+            <ul class="menu">
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Nossa História</a></li>
+                <li><a href="#">Eventos</a></li>
+                <li><a href="#">Doações</a></li>
+                <li><a href="../../voluntariado_Folder/voluntariado.html">Voluntariado</a></li>
+                <li><a href="#">Depoimentos</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="../Cadastro/cadastro.html" class="botaoentrar" style="color: white;">Cadastrar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+<section class="doacao" id="doacao">
+  <div class="container">
+    <div class="doacao-header">
+      <span class="tag">Faça a diferença</span>
+      <h2>Apoie Nossa Causa</h2>
+      <p>Sua contribuição garante a manutenção, melhorias e ainda ajuda nos eventos da Macca.</p>
+    </div>
+
+    <div class="doacao-grid">
+      <div class="pix-wrap">
+        <div class="pix-card">
+          <h3>Doe agora via PIX</h3>
+          <p class="sub">Escaneie o QR Code ou copie a chave</p>
+          <div class="qr" aria-label="QR Code"></div>
+          <div class="pix-key">
+            <span id="pix-chave">actp2010@gmail.com</span>
+            <button type="button" class="copiar-pix" title="Copiar chave PIX" aria-label="Copiar chave PIX"><i class="fa-regular fa-copy"></i></button>
+          </div>
+          <a href="#" class="btn btn-green copiar-pix">Copiar Chave PIX</a>
+        </div>
+        <a href="#" class="seja-voluntario">Seja Voluntário</a>
+      </div>
+
+      
+      <div class="tiers">
+        <div class="tier">
+          <div class="check"><i class="fa-regular fa-heart"></i></div>
+          <div>
+            <h4>R$10</h4>
+            <p>Ajuda na alimentação de uma família por uma semana.</p>
+          </div>
+        </div>
+        <div class="tier">
+          <div class="check"><i class="fa-regular fa-heart"></i></div>
+          <div>
+            <h4>R$25</h4>
+            <p>Contribui com medicamentos essenciais por um mês.</p>
+          </div>
+        </div>
+        <div class="tier">
+          <div class="check"><i class="fa-regular fa-heart"></i></div>
+          <div>
+            <h4>R$50</h4>
+            <p>Materiais escolares para crianças em grupo.</p>
+          </div>
+        </div>
+        <div class="tier">
+          <div class="check"><i class="fa-regular fa-heart"></i></div>
+          <div>
+            <h4>R$100</h4>
+            <p>Cesta de cuidado completa para um idoso por mês.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="footer-content">
+    <div>
+      <div class="footer-logo">
+        <i class="fa-solid fa-heart heart"></i>
+        <span>ACITP</span>
+      </div>
+      <p class="footer-desc">
+        Transformando vidas com amor e dignidade desde 2010.
+        Cada idoso merece ser cuidado com carinho.
+      </p>
+    </div>
+
+    <div class="footer-column contact-info">
+      <h3>Contato</h3>
+      <p><i class="fa-solid fa-phone"></i> (+55) 21 96441-4945</p>
+      <p><a href="mailto:acitp2010@gmail.com"><i class="fa-solid fa-envelope"></i>        acitp2010@gmail.com</a></p>
+      <p><i class="fa-solid fa-location-dot"></i> Estrada do Babi, 14455, Vila Magalhães em Belford Roxo</p>
+    </div>
+
+    <div class="footer-column">
+      <h3>Links Úteis</h3>
+      <ul>
+        <li><a href="#">Nossa História</a></li>
+        <li><a href="#">Eventos</a></li>
+        <li><a href="#">Doações</a></li>
+        <li><a href="#">Voluntariado</a></li>
+        <li><a href="#">Depoimentos</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 ONG ACITP. Todos os direitos reservados.
+  </div>
+</footer>
+
+<script>
+  const pixChave = document.getElementById("pix-chave").textContent.trim();
+  const botoesCopiar = document.querySelectorAll(".copiar-pix");
+
+  function copiarComFallback(texto) {
+    const campoTemporario = document.createElement("textarea");
+    campoTemporario.value = texto;
+    campoTemporario.setAttribute("readonly", "");
+    campoTemporario.style.position = "fixed";
+    campoTemporario.style.opacity = "0";
+    document.body.appendChild(campoTemporario);
+    campoTemporario.select();
+    document.execCommand("copy");
+    document.body.removeChild(campoTemporario);
+  }
+
+  async function copiarPix(event) {
+    event.preventDefault();
+
+    try {
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(pixChave);
+      } else {
+        copiarComFallback(pixChave);
+      }
+    } catch {
+      copiarComFallback(pixChave);
+    }
+
+    const botao = event.currentTarget;
+    const textoOriginal = botao.innerHTML;
+    botao.innerHTML = botao.tagName === "A" ? "Chave copiada!" : '<i class="fa-solid fa-check"></i>';
+
+    setTimeout(() => {
+      botao.innerHTML = textoOriginal;
+    }, 1800);
+  }
+
+  botoesCopiar.forEach((botao) => {
+    botao.addEventListener("click", copiarPix);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Voluntariado</title>
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">💚 ACITP</div>
+
+  <nav>
+    <a href="#">Início</a>
+    <a href="#">Nossa História</a>
+    <a href="#">Eventos</a>
+    <a href="#">Doações</a>
+    <a href="#">Voluntariado</a>
+    <a href="#">Contato</a>
+
+    <button class="btn-login">Entrar</button>
+  </nav>
+</header>
+
+<section class="container">
+
+  <div class="corpo">
+
+    <h3>JUNTE-SE A NÓS</h3>
+
+    <h1>SEJA VOLUNTÁRIO</h1>
+
+    <p>
+      Doe seu tempo e suas habilidades.
+      Precisamos de pessoas dispostas a fazer companhia e cuidar.
+    </p>
+
+    <h3>VOLUNTÁRIOS SÃO O CORAÇÃO DA ONG</h3>
+
+    <p>
+      Desde acompanhamento e atividades culturais até apoio administrativo.
+      Toda ajuda faz a diferença.
+    </p>
+
+    <ul>
+      <li>Atividades recreativas e culturais</li>
+      <li>Acompanhamento em consultas médicas</li>
+      <li>Apoio administrativo e logístico</li>
+      <li>Oficinas de artesanato e música</li>
+    </ul>
+
+    <button class="btn-doar">
+      <i class="fi fi-rr-hand-holding-heart"></i>
+      Fazer uma Doação
+    </button>
+
+  </div>
+
+  <!-- FORMULÁRIO DJANGO -->
+  <form class="form-box" method="POST">
+
+    {% csrf_token %}
+
+    <input
+      type="text"
+      name="nome"
+      placeholder="SEU NOME COMPLETO"
+      required>
+
+    <input
+      type="email"
+      name="email"
+      placeholder="SEU E-MAIL"
+      required>
+
+    <input
+      type="text"
+      name="telefone"
+      placeholder="SEU TELEFONE"
+      required>
+
+    <select name="profissao" required>
+
+      <option selected disabled>
+        SUA PROFISSÃO ATUAL
+      </option>
+
+      <option value="Enfermeiro / Técnico de Enfermagem">
+        Enfermeiro / Técnico de Enfermagem
+      </option>
+
+      <option value="Fisioterapeuta">
+        Fisioterapeuta
+      </option>
+
+      <option value="Psicólogo">
+        Psicólogo
+      </option>
+
+      <option value="Nutricionista">
+        Nutricionista
+      </option>
+
+      <option value="Assistente Social">
+        Assistente Social
+      </option>
+
+      <option value="Artesão / Professor de Artes">
+        Artesão / Professor de Artes
+      </option>
+
+      <option value="Comunicador / Social Media">
+        Comunicador / Social Media
+      </option>
+
+      <option value="Voluntário Geral">
+        Voluntário Geral
+      </option>
+
+    </select>
+
+    <textarea
+      name="motivacao"
+      placeholder="POR QUE DESEJA SER VOLUNTÁRIO?(OPCIONAL)"
+      required></textarea>
+
+    <button type="submit" class="btn-enviar">
+      ENVIAR INSCRIÇÃO
+    </button>
+
+  </form>
+
+</section>
+
+<footer class="footer">
+
+  <div class="footer-col">
+
+    <h3>💛 ACITP</h3>
+
+    <p>
+      Transformando vidas com amor e dignidade desde 2010.
+      Cada idoso merece ser cuidado com carinho.
+    </p>
+
+  </div>
+
+  <div class="footer-col">
+
+    <h3>Contato</h3>
+
+    <p id="telefone">
+      <i class="fi fi-rr-phone-call"></i>
+      (+55) 21 96441-4945
+    </p>
+
+    <p id="email">
+      <i class="fi fi-rr-envelope"></i>
+      acitp2010@gmail.com
+    </p>
+
+    <p id="endereco">
+      <i class="fi fi-rr-marker"></i>
+      Estrada do Babi, 14455,
+      Vila Magalhães em Belford Roxo
+    </p>
+
+  </div>
+
+  <div class="footer-col">
+
+    <h3>Links Úteis</h3>
+
+    <a href="#">Nossa História</a>
+    <a href="#">Eventos</a>
+    <a href="#">Doações</a>
+    <a href="#">Voluntariado</a>
+    <a href="#">Depoimentos</a>
+
+  </div>
+
+  <div class="copyright">
+    © 2026 ONG ACITP. Todos os direitos reservados.
+  </div>
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACITP - Entrar</title>
+    <link rel="stylesheet" href="cadastro.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <span><i class="fa-solid fa-heart"></i></span> ACITP
+            </a>
+
+            <ul class="menu">
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Nossa História</a></li>
+                <li><a href="#">Eventos</a></li>
+                <li><a href="#">Doações</a></li>
+                <li><a href="../Voluntario/voluntariado.html">Voluntariado</a></li>
+                <li><a href="#">Depoimentos</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="../Login/login.html" class="botaoentrar" style="color: white;">Entrar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+        <div class="parteverde">
+            <div class="circulo3"></div>   
+            <div class="heart">♡</div>
+            <h1>Faça parte desta família</h1>
+            <p>Cadastre-se e ajude a transformar a vida de quem já fez tanto por nós. Cada voluntario é essencial</p>
+        </div>
+
+        <div class="partebranca">
+            <div class="form-container">
+                <h2>Criar conta</h2>
+                <p>Preencha seus dados para se cadastrar</p>
+
+                <form id="cadastroForm">
+
+                    <label for="inome">Nome completo</label>
+                    <input type="text" id="inome" placeholder="Maria Silva" required>
+
+                    <label for="itelefone">Telefone</label>
+                    <input type="tel" id="itelefone" placeholder="(11) 99999-9999">
+
+                    <label for="iemail">E-mail</label>
+                    <input type="email" id="iemail" placeholder="seu@email.com" required>
+
+                    <div class="senha-container">
+                        <label for="isenha">Senha</label>
+                        <input type="password" id="isenha" placeholder="•••••••" required  >
+                        <span id="versenha">👁</span>
+
+                        <label for="iconfirmasenha">Confirmar senha</label>
+                        <input type="password" id="iconfirmasenha" placeholder="•••••••" required  >
+
+                    </div>
+
+                
+                    <button type="submit" class="btn-entrar-form">Cadastrar</button>
+
+                </form>
+
+                <div class="cadastre">
+                   <p>Já tem conta? <a href="../Login/login.html">Entrar</a> </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<script src="login.js"></script>
+
+<footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">
+                    <i class="fa-solid fa-heart"></i> ACITP
+                </div>
+
+                <p class="footer-desc">
+                    Transformando vidas com amor e dignidade desde 2010. Cada idoso merece ser cuidado com carinho.
+                </p>
+            </div>
+
+
+            <div class="footer-column">
+                <h3>Contato</h3>
+                <div class="contact-info">
+                    <p><a href="tel:+5521964414945"><i class="fa-solid fa-phone"></i>       (+55) 21 96441-4945</a></p>
+                    <p><a href="mailto:acitp2010@gmail.com"><i class="fa-solid fa-envelope"></i>        acitp2010@gmail.com</a></p>
+                    <p><i class="fa-solid fa-location-dot"></i>        Estrada do Babi, 14455, Vila Magalhães em Belford Roxo</p>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="#">Nossa História</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="#">Doações</a></li>
+                    <li><a href="#">Voluntariado</a></li>
+                    <li><a href="#">Depoimentos</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 ONG ACITP. Todos os direitos reservados.
+        </div>
+    </footer>
+
+</body>
+</html>

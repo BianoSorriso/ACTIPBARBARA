@@ -1,0 +1,384 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 6% 13px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #2C3E2F;
+    text-decoration: none;
+}
+
+.logo i {
+    color: #457356;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #476E56;
+}
+
+.botaoentrar {
+    background-color: #D2A85E;
+    padding: 10px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.botaoentrar:hover {
+    background-color: #8e6a2d;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    min-height: calc(100vh - 70px);
+}
+
+
+.parteverde {
+    background: #3D6652;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    padding: 60px 40px;
+    min-height: 100vh;
+}
+
+.parteverde::before {
+    content: '';
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 50%;
+    top: 70px;
+    right: 40px;
+    z-index: 1;
+}
+
+.parteverde::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    top: 24%;
+    right: 205px;
+    z-index: 1;
+}
+
+.parteverde .circulo3 {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
+    bottom: 8px;
+    left: 60px;
+    z-index: 1;
+}
+
+.heart {
+    font-size: 48px;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+
+.parteverde h1 {
+    font-size: 42px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    max-width: 450px;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.parteverde p {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 450px;
+    opacity: 0.95;
+    text-align: center;
+}
+
+
+.partebranca {
+    flex: 1;
+    background: #F8F6F2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 40px;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.form-container h2 {
+    font-size: 28px;
+    color: #2C3E2F;
+    margin-bottom: 8px;
+}
+
+.form-container p {
+    color: #666;
+    margin-bottom: 40px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #444;
+}
+
+input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #476E56;
+    box-shadow: 0 0 0 3px rgba(71, 110, 86, 0.15);
+}
+
+.senha-container {
+    position: relative;
+}
+
+.senha-container input {
+    margin-bottom: 20px;
+}
+
+#versenha {
+    position: absolute;
+    right: 16px;
+    top: 42px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+}
+
+.esqueceu {
+    display: block;
+    text-align: right;
+    color: #476E56;
+    font-size: 14px;
+    margin-bottom: 25px;
+    text-decoration: none;
+}
+
+.esqueceu:hover {
+    text-decoration-line: underline;
+}
+
+.btn-entrar-form {
+    width: 100%;
+    background: #476E56;
+    color: white;
+    border: none;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+}
+
+.btn-entrar-form:hover {
+    background: #3a5a48;
+}
+
+.cadastre {
+    text-align: center;
+    color: #666;
+}
+
+.cadastre a {
+    color: #476E56;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.cadastre a:hover {
+    text-decoration: underline;
+}
+
+
+footer {
+    background-color: #372C25;
+    color: #ddd;
+    padding: 40px 10% 10px;
+}
+
+i {
+    color: #D19847;
+    margin-right: 10px;
+}
+
+.footer-content {
+    align-items: center;
+    justify-items: center;
+    text-align: left;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.56fr;
+    gap: 50px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #FAF8F5;
+    margin-bottom: 16px;
+}
+
+.footer-logo span {
+    color: #FAF8F5;
+}
+
+.footer-desc {
+    color: #D2CBC2;
+    line-height: 1.6;
+    max-width: 320px;
+}
+
+.footer-column h3 {
+    color: #D2CBC2;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column a {
+    color: #D2CBC2;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column a:hover {
+    color: #858585;
+}
+
+.contact-info {
+    line-height: 2.2;
+    font-size: 14px;
+}
+
+.contact-info p {
+    color: #D2CBC2;
+    text-align: left;
+}
+
+.contact-info a {
+    color: #D2CBC2;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.contact-info a:hover {
+    color: #80807f;
+}
+
+.footer-bottom {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+}
+
+
+@media (max-width: 900px) {
+    main {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .parteverde {
+        min-height: 40vh;
+    }
+
+    .parteverde h1 {
+        white-space: normal;
+        font-size: 38px;
+    }
+}

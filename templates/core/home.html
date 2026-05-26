@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ site_config.organization_name }} - Inicio{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="hero-background">
+        {% if site_config.hero_image %}
+            <img src="{{ site_config.hero_image.url }}" alt="Imagem principal da ACITP">
+        {% else %}
+            <img src="{% static 'core/images/homep.png' %}" alt="Imagem principal da ACITP">
+        {% endif %}
+    </div>
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <span class="eyebrow light-eyebrow"><i class="fa-solid fa-heart"></i> {{ site_config.hero_badge }}</span>
+            <h1>{{ site_config.hero_title }}</h1>
+            <p>{{ site_config.hero_description }}</p>
+            <div class="hero-actions">
+                <a class="button" href="#doacoes"><i class="fa-solid fa-hand-holding-heart"></i> Fazer uma doacao</a>
+                <a class="button button-outline" href="{% url 'volunteer' %}" style="color: white; border-color: rgba(255,255,255,0.4);">Seja voluntario</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section muted-section" id="historia">
+    <div class="container section-stack center-text">
+        <span class="eyebrow">{{ site_config.history_highlight }}</span>
+        <h2>{{ site_config.history_title }}</h2>
+        <p class="section-copy max-text">{{ site_config.history_description }}</p>
+        <div class="stats-grid">
+            {% for item in statistics %}
+                <article class="info-card stat-card">
+                    <span class="icon-badge">
+                        {% if 'fa-' in item.icon %}
+                            <i class="{{ item.icon }}"></i>
+                        {% else %}
+                            {{ item.icon }}
+                        {% endif %}
+                    </span>
+                    <strong>{{ item.value }}</strong>
+                    <span>{{ item.label }}</span>
+                </article>
+            {% empty %}
+                <article class="info-card stat-card">
+                    <span class="icon-badge"><i class="fa-solid fa-calendar-days"></i></span>
+                    <strong>2010</strong>
+                    <span>Fundacao</span>
+                </article>
+                <article class="info-card stat-card">
+                    <span class="icon-badge"><i class="fa-solid fa-users"></i></span>
+                    <strong>32</strong>
+                    <span>Idosos atendidos</span>
+                </article>
+                <article class="info-card stat-card">
+                    <span class="icon-badge"><i class="fa-solid fa-house-chimney"></i></span>
+                    <strong>14</strong>
+                    <span>Residentes</span>
+                </article>
+                <article class="info-card stat-card">
+                    <span class="icon-badge"><i class="fa-solid fa-clock"></i></span>
+                    <strong>15 anos</strong>
+                    <span>Atuacao</span>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section accent-section director-band">
+    <div class="container band-content">
+        <span class="eyebrow light-eyebrow">Responsavel pelo asilo</span>
+        <h2>{{ site_config.director_name }}</h2>
+        <p>{{ site_config.director_role }}</p>
+    </div>
+</section>
+
+<section class="section" id="servicos">
+    <div class="container section-stack center-text">
+        <span class="eyebrow">O que fazemos</span>
+        <h2>{{ site_config.services_title }}</h2>
+        <p class="section-copy max-text">{{ site_config.services_description }}</p>
+        <div class="services-grid">
+            {% for service in services %}
+                <article class="info-card service-card">
+                    <span class="icon-badge">
+                        {% if 'fa-' in service.icon %}
+                            <i class="{{ service.icon }}"></i>
+                        {% else %}
+                            {{ service.icon }}
+                        {% endif %}
+                    </span>
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.description }}</p>
+                </article>
+            {% empty %}
+                <article class="info-card service-card">
+                    <span class="icon-badge"><i class="fa-solid fa-house-user"></i></span>
+                    <h3>Acolhimento residencial</h3>
+                    <p>Moradia digna com cuidado diario e apoio humanizado.</p>
+                </article>
+                <article class="info-card service-card">
+                    <span class="icon-badge"><i class="fa-solid fa-stethoscope"></i></span>
+                    <h3>Atendimento medico</h3>
+                    <p>Consultas, acompanhamentos e apoio com medicamentos.</p>
+                </article>
+                <article class="info-card service-card">
+                    <span class="icon-badge"><i class="fa-solid fa-palette"></i></span>
+                    <h3>Atividades sociais</h3>
+                    <p>Oficinas e encontros que fortalecem vinculos e autonomia.</p>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section image-section">
+    <div class="image-overlay"></div>
+    <div class="container section-stack">
+        <div class="section-heading center-text on-dark">
+            <span class="eyebrow light-eyebrow">Agenda</span>
+            <h2>Proximos eventos</h2>
+        </div>
+        <div class="events-grid compact-grid">
+            {% for event in featured_events %}
+                <article class="info-card event-card">
+                    <div class="event-date">{{ event.starts_at|date:"d/m/Y" }}</div>
+                    <h3>{{ event.title }}</h3>
+                    <p>{{ event.description }}</p>
+                    <div class="event-meta">{{ event.location }} | {{ event.starts_at|date:"H:i" }}</div>
+                </article>
+            {% empty %}
+                <article class="info-card event-card">
+                    <div class="event-date">15/03/2026</div>
+                    <h3>Festival da Primavera</h3>
+                    <p>Musica, atividades e convivencia com os idosos e suas familias.</p>
+                    <div class="event-meta">Sede principal | 14:00</div>
+                </article>
+            {% endfor %}
+        </div>
+        <div class="center-text">
+            <a class="button button-light" href="{% url 'events' %}">Ver todos os eventos</a>
+        </div>
+    </div>
+    <div class="section-background">
+        {% if site_config.events_banner %}
+            <img src="{{ site_config.events_banner.url }}" alt="Eventos da ACITP">
+        {% else %}
+            <img src="{% static 'core/images/eventospp.png' %}" alt="Eventos da ACITP">
+        {% endif %}
+    </div>
+</section>
+
+<section class="section" id="doacoes">
+    <div class="container donation-layout">
+        <div class="info-card donation-panel">
+            <span class="eyebrow">Faca a diferenca</span>
+            <h2>{{ site_config.donation_title }}</h2>
+            <p>{{ site_config.donation_description }}</p>
+            <div class="pix-box">
+                <strong>Chave PIX</strong>
+                <div class="copy-row">
+                    <span id="pix-key">{{ site_config.pix_key }}</span>
+                    <button class="button button-small" type="button" data-copy-target="pix-key">Copiar</button>
+                </div>
+            </div>
+            <div class="tiers-grid">
+                {% for tier in donation_tiers %}
+                    <article class="tier-card">
+                        <strong>{{ tier.display_value }}</strong>
+                        <span>{{ tier.description }}</span>
+                    </article>
+                {% empty %}
+                    <article class="tier-card"><strong>R$ 10</strong><span>Ajuda na alimentacao semanal.</span></article>
+                    <article class="tier-card"><strong>R$ 25</strong><span>Contribui com medicamentos essenciais.</span></article>
+                    <article class="tier-card"><strong>R$ 50</strong><span>Apoia atividades e manutencao.</span></article>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="info-card contact-panel" id="contato">
+            <span class="eyebrow">Fale conosco</span>
+            <h2>Contato</h2>
+            <div class="contact-highlight-grid">
+                <div class="mini-card"><strong>Telefone</strong><span>{{ site_config.contact_phone }}</span></div>
+                <div class="mini-card"><strong>E-mail</strong><span>{{ site_config.contact_email }}</span></div>
+                <div class="mini-card"><strong>Endereco</strong><span>{{ site_config.contact_address }}</span></div>
+            </div>
+            <form method="post" action="{% url 'contact_submit' %}" class="form-grid">
+                {% csrf_token %}
+                {% for field in contact_form %}
+                    <div class="field-wrapper {% if field.name == 'message' %}field-full{% endif %}">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}<small class="error-text">{{ field.errors|join:', ' }}</small>{% endif %}
+                    </div>
+                {% endfor %}
+                <div class="field-full">
+                    <button class="button" type="submit">Enviar mensagem</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="section muted-section">
+    <div class="container section-stack center-text">
+        <span class="eyebrow">Vozes que inspiram</span>
+        <h2>Depoimentos</h2>
+        <div class="testimonials-grid compact-grid">
+            {% for testimonial in featured_testimonials %}
+                <article class="info-card testimonial-card">
+                    <p>"{{ testimonial.content }}"</p>
+                    <strong>{{ testimonial.author_name }}</strong>
+                    {% if testimonial.author_role %}<span>{{ testimonial.author_role }}</span>{% endif %}
+                </article>
+            {% empty %}
+                <article class="info-card testimonial-card">
+                    <p>"Aqui encontrei uma nova familia. O cuidado diario faz toda a diferenca."</p>
+                    <strong>Dona Maria</strong>
+                    <span>Moradora</span>
+                </article>
+            {% endfor %}
+        </div>
+        <div class="center-text">
+            <a class="button button-outline" href="{% url 'testimonials' %}">Ver mais depoimentos</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

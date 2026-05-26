@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Cadastro - {{ site_config.organization_name }}{% endblock %}
+
+{% block content %}
+<section class="section auth-section">
+    <div class="container auth-grid">
+        <div class="auth-copy accent-panel" style="display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -50px; left: -50px; width: 150px; height: 150px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
+            <div style="font-size: 5rem; color: rgba(255,255,255,0.2); position: absolute; bottom: 20px; right: 20px;"><i class="fa-solid fa-heart"></i></div>
+            
+            <span class="eyebrow light-eyebrow">Faça parte desta família</span>
+            <h1>Cadastre-se e ajude a transformar vidas</h1>
+            <p>Cada voluntário é essencial para levar dignidade e amor aos nossos idosos. Crie sua conta para participar da nossa rede de apoio.</p>
+        </div>
+        <div class="info-card auth-card">
+            <h2>Criar conta</h2>
+            <p style="color: var(--muted); margin-bottom: 1.5rem;">Preencha seus dados para se cadastrar</p>
+            
+            <form method="post" class="form-grid single-column">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="field-wrapper field-full">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}<small class="error-text">{{ field.errors|join:', ' }}</small>{% endif %}
+                    </div>
+                {% endfor %}
+                {% if form.non_field_errors %}
+                    <div class="field-full"><small class="error-text">{{ form.non_field_errors|join:', ' }}</small></div>
+                {% endif %}
+                <div class="field-full" style="margin-top: 1rem;">
+                    <button class="button" type="submit" style="width: 100%;">Cadastrar</button>
+                </div>
+            </form>
+            <p class="auth-link" style="margin-top: 1.5rem; text-align: center;">Já tem conta? <a href="{% url 'login' %}">Entrar</a></p>
+        </div>
+    </div>
+</section>
+{% endblock %}

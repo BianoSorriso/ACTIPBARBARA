@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Depoimentos - {{ site_config.organization_name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero simple-hero">
+    <div class="container center-text section-stack small-stack">
+        <span class="eyebrow"><i class="fa-solid fa-quote-left"></i> Vozes que inspiram</span>
+        <h1>Depoimentos</h1>
+        <p class="section-copy max-text">Histórias de amor, cuidado e transformação compartilhadas por nossos idosos, familiares e voluntários.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container listing-grid">
+        {% for testimonial in testimonials %}
+            <article class="info-card testimonial-card" style="position: relative; padding-top: 3rem;">
+                <div style="position: absolute; top: 1rem; left: 1.5rem; font-size: 2.5rem; color: rgba(69, 115, 86, 0.1);">
+                    <i class="fa-solid fa-quote-left"></i>
+                </div>
+                <p style="font-style: italic; font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem; color: var(--text);">"{{ testimonial.content }}"</p>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="icon-badge" style="width: 2.5rem; height: 2.5rem; font-size: 1rem;">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div>
+                        <strong style="display: block; color: var(--primary);">{{ testimonial.author_name }}</strong>
+                        {% if testimonial.author_role %}<span style="font-size: 0.85rem; color: var(--muted);">{{ testimonial.author_role }}</span>{% endif %}
+                    </div>
+                </div>
+            </article>
+        {% empty %}
+            <div class="field-full center-text" style="padding: 4rem 2rem; background: var(--card); border-radius: var(--radius); border: 2px dashed var(--border);">
+                <div style="font-size: 3rem; color: var(--border); margin-bottom: 1rem;"><i class="fa-solid fa-comment-slash"></i></div>
+                <h2>Ainda não temos depoimentos</h2>
+                <p>Em breve compartilharemos as primeiras histórias aqui.</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

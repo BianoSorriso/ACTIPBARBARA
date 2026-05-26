@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Entrar - {{ site_config.organization_name }}{% endblock %}
+
+{% block content %}
+<section class="section auth-section">
+    <div class="container auth-grid">
+        <div class="auth-copy accent-panel" style="display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
+            <div style="font-size: 5rem; color: rgba(255,255,255,0.2); position: absolute; bottom: 20px; left: 20px;"><i class="fa-solid fa-lock"></i></div>
+
+            <span class="eyebrow light-eyebrow">Bem-vindo de volta</span>
+            <h1>Acesse sua conta</h1>
+            <p>Entre para gerenciar suas informações, acompanhar eventos e continuar apoiando a ACITP.</p>
+        </div>
+        <div class="info-card auth-card">
+            <h2>Entrar</h2>
+            <p style="color: var(--muted); margin-bottom: 1.5rem;">Use seu e-mail e senha para acessar</p>
+
+            <form method="post" class="form-grid single-column">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="field-wrapper field-full">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}<small class="error-text">{{ field.errors|join:', ' }}</small>{% endif %}
+                    </div>
+                {% endfor %}
+                {% if form.non_field_errors %}
+                    <div class="field-full"><small class="error-text">{{ form.non_field_errors|join:', ' }}</small></div>
+                {% endif %}
+                <div class="field-full" style="margin-top: 1rem;">
+                    <button class="button" type="submit" style="width: 100%;">Entrar</button>
+                </div>
+            </form>
+            <p class="auth-link" style="margin-top: 1.5rem; text-align: center;">Não tem conta? <a href="{% url 'register' %}">Cadastre-se</a></p>
+        </div>
+    </div>
+</section>
+{% endblock %}
